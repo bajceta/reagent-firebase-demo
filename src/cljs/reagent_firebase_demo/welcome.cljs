@@ -1,8 +1,4 @@
-(ns reagent-firebase-demo.welcome
-  (:require [reagent.core :as reagent :refer [atom]]
-            [reagent.session :as session]
-            [secretary.core :as secretary :include-macros true]
-            [accountant.core :as accountant]))
+(ns reagent-firebase-demo.welcome)
 
 (defn welcome [name ]
-  [:h1 "Welcome " name])
+  [:span  "Welcome " name])
