@@ -3,8 +3,7 @@
             [reagent.session :as session]
             [secretary.core :as secretary :include-macros true]
             [accountant.core :as accountant]
-            [reagent-firebase-demo.welcome :as welcome]
-            [reagent-firebase-demo.header :as header]
+            [reagent-firebase-demo.ui-components :as ui]
             [reagent-firebase-demo.form :as form] 
             [reagent-firebase-demo.firebase :as firebase] ))
 ;; State 
@@ -38,7 +37,9 @@
 
 (defn todo-item [item]
   [:div.todo-item item
-   [:a {:on-click (partial remove-todo-item item) } "remove"]])
+   [:span " click here to remove "]
+   [:div.right
+   [:a {:on-click (partial remove-todo-item item) } "remove"]]])
 
 (defonce new-item (atom ""))
 
@@ -52,11 +53,11 @@
    [:h2 "Our app state"]
    [:div (str @state)]
    [:h2 "a simple component: "]
-   [welcome/welcome (str "dear user " (:user @state))]
+   [ui/welcome (str "dear user " (:user @state))]
    [:h2 "another one: "]
-   [header/header (reagent/cursor state [ :user ])]
+   [ui/header (reagent/cursor state [ :user ])]
    [:div 
-    [:h2 "Clicks are here" ]
+    [:h2 "Clicks are here below : " ]
     [:div ( :clicks @state)]
     [:a {:on-click add-one } "add" ]
     [:span " | "]
